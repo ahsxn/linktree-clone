@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Link extends Model
 {
@@ -19,7 +20,12 @@ class Link extends Model
 
     public function visits(): HasMany
     {
-        return $this->hasMany(Vist::class);
+        return $this->hasMany(Visit::class);
+    }
+
+    public function latest_visit(): HasOne
+    {
+        return $this->hasOne(Visit::class)->latest();
     }
 
     public function user(): BelongsTo

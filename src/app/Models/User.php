@@ -53,6 +53,6 @@ class User extends Authenticatable
 
     public function visits(): HasManyThrough
     {
-        return $this->hasManyThrough(Vist::class, Link::class);
+        return $this->hasManyThrough(Visit::class, Link::class);
     }
 }
